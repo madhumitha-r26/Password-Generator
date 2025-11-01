@@ -36,10 +36,10 @@ def generate_password():
             copy_button.place(x=120, y=150)  # Show copy button
             copy_button.config(state=tk.NORMAL)  # Enable copy button
         else:
-            result_label.config(text="Password length must be between 8 and 15!", fg="red")
+            result_label.config(text="Password length must be between 8 and 15!",  fg="#a90052")
             copy_button.place_forget()  # Hide copy button on invalid length
     except ValueError:
-        result_label.config(text="Please enter a valid integer for length!", fg="red")
+        result_label.config(text="Please enter a valid integer for length!",  fg="#a90052")
         copy_button.place_forget()  # Hide copy button on error
 
 def clear_password():
@@ -57,7 +57,7 @@ def copy_password():
 
 # Create the main window
 root = tk.Tk()
-root.geometry("400x275")
+root.geometry("400x290")
 root.title("Password Generator")
 
 # Create and place widgets

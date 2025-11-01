@@ -53,11 +53,11 @@ def copy_password():
         root.clipboard_append(generated_password)
         result_label.config(text=f"Password copied to clipboard: {generated_password}", fg="#4a2345")
     else:
-        result_label.config(text="No password to copy. Generate one first.", fg="red")
+        result_label.config(text="No password to copy. Generate one first.", fg="#a90052")
 
 # Create the main window
 root = tk.Tk()
-root.geometry("400x250")
+root.geometry("400x275")
 root.title("Password Generator")
 
 # Create and place widgets
@@ -75,8 +75,7 @@ generate_button = tk.Button(root, font="Calibri 14 bold", text="Generate", bg="g
 generate_button.place(x=20, y=100)
 
 result_label = tk.Label(root, text="", font="Calibri 14")
-result_label.place(x=40, y=200)
-
+result_label.place(x=20, y=200)
 
 
 copy_button = tk.Button(root, font="Calibri 12 bold", text="Copy Password", bg="blue", fg="white", width=20, height=1, activebackground="#4169e1", command=copy_password, state=tk.DISABLED)

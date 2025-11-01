@@ -1,7 +1,7 @@
 import tkinter as tk
 import random
 
-# Define character sets
+
 lower = "abcdefghijklmnopqrstuvwxyz"
 upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 numbers = "0123456789"
@@ -13,39 +13,38 @@ def generate_password():
     try:
         length = int(length_entry.get())
         if length >= 8 and length <= 15:
-            # Ensure at least one of each type
+
             password_list = [
                 random.choice(lower),
                 random.choice(upper),
                 random.choice(numbers),
                 random.choice(symbols)
             ]
-            # Fill the rest randomly from all_chars
+
             remaining_length = length - 4
             if remaining_length > 0:
                 password_list.extend(random.sample(all_chars, remaining_length))
-            # Shuffle to randomize order
+
             random.shuffle(password_list)
             password = "".join(password_list)
             
-            # Store the password for copying
             global generated_password
             generated_password = password
             
             result_label.config(text=f"Your generated password: {password}", fg="black")
-            copy_button.place(x=120, y=150)  # Show copy button
-            copy_button.config(state=tk.NORMAL)  # Enable copy button
+            copy_button.place(x=120, y=150) 
+            copy_button.config(state=tk.NORMAL) 
         else:
             result_label.config(text="Password length must be between 8 and 15!",  fg="#a90052")
-            copy_button.place_forget()  # Hide copy button on invalid length
+            copy_button.place_forget()  
     except ValueError:
         result_label.config(text="Please enter a valid integer for length!",  fg="#a90052")
-        copy_button.place_forget()  # Hide copy button on error
+        copy_button.place_forget()  
 
 def clear_password():
     length_entry.delete(0, tk.END)
     result_label.config(text="")
-    copy_button.place_forget()  # Hide copy button
+    copy_button.place_forget() 
 
 def copy_password():
     if 'generated_password' in globals() and generated_password:
@@ -55,12 +54,11 @@ def copy_password():
     else:
         result_label.config(text="No password to copy. Generate one first.", fg="#a90052")
 
-# Create the main window
 root = tk.Tk()
 root.geometry("400x290")
 root.title("Password Generator")
 
-# Create and place widgets
+
 instruction_label = tk.Label(root, font="Calibri 14 bold", text="Enter the length of your password:")
 instruction_label.place(x=10, y=10)
 
@@ -79,7 +77,6 @@ result_label.place(x=20, y=200)
 
 
 copy_button = tk.Button(root, font="Calibri 12 bold", text="Copy Password", bg="blue", fg="white", width=20, height=1, activebackground="#4169e1", command=copy_password, state=tk.DISABLED)
-# Do not place initially; it will be placed after generation
 
-# Start the GUI event loop
 root.mainloop()
+
